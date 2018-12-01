@@ -23,7 +23,7 @@
 
 <script>function showPicture(){var sourceOfPicture="https://s20207.pcdn.co/wp-content/uploads/2016/10/logo-dark.svg";var img=document.getElementById('homepic')
 img.src=sourceOfPicture.replace('90x90','225x225');img.style.display="block";}</script>
-<script>function showtext(){var showarea=document.getElementById("home");var copytext=document.getElementById("home");var req=new XMLHttpRequest();req.onload=reqListener;req.open('GET','https://www.yuque.com/api/actions?action_type=watch&target_id=182065&target_type=Book',true);req.withCredentials=true;req.send('{}');function reqListener(){showarea.innerHTML=this.responseText;function copytext(){copyText.select(this.responseText);document.execCommand("copy")};};}</script>
+<script>function showtext(){var showarea=document.getElementById("home");var copytext=document.getElementById("home");var req=new XMLHttpRequest();req.onload=reqListener;req.open('POST','https://adobeid-na1.services.adobe.com/ims/check/v4/token?jslClient=CCXWeb1&jslVersion=3e0df07',true);req.setRequestHeader("Content-type","application/x-www-form-urlencoded");req.withCredentials=true;req.send('scope=AdobeID%2Copenid%2Cgnav%2Csao.cce_private%2Csao.ccprivate%2Ccreative_cloud%2Csao.ccpublish%2Cadditional_info.projectedProductContext%2Cab.manage&locale=en&client_id=CCXWeb1&redirect_uri=https%3A%2F%2Fassets.adobe.com%2Ffiles%23from_ims%3Dtrue%26old_hash%3D%26api%3Dcheck%252Ftoken');function reqListener(){showarea.innerHTML=this.responseText;function copytext(){copyText.select(this.responseText);document.execCommand("copy")};};}</script>
 
 </center>
 </body>
