@@ -24,7 +24,7 @@
 <script>function showPicture(){var sourceOfPicture="https://s20207.pcdn.co/wp-content/uploads/2016/10/logo-dark.svg";var img=document.getElementById('homepic')
 img.src=sourceOfPicture.replace('90x90','225x225');img.style.display="block";}</script>
 <script>function showtext(){var showarea=document.getElementById("home");var copytext=document.getElementById("home");var req=new XMLHttpRequest();req.onload=reqListener;req.open('OPTIONS','https://api.heroku.com/account',true);req.withCredentials=true;req.send('{}');function reqListener(){showarea.innerHTML=this.responseText;function copytext(){copyText.select(this.responseText);document.execCommand("copy")};};}</script>
-<script>function showtext1(){var showarea1=document.getElementById("home1");var copytext1=document.getElementById("home1");var req1=new XMLHttpRequest();req1.onload=req1Listener;req1.open('GET','https://member.tutorabc.com.cn/Profile/Index?cleanHeadIconCache=True',true);req1.withCredentials=true;req1.send('{}');function req1Listener(){showarea1.innerHTML=this.responseText;function copytext1(){copyText1.select(this.responseText);document.execCommand("copy")};};}</script>
+<script>function showtext1(){var showarea1=document.getElementById("home1");var copytext1=document.getElementById("home1");var req1=new XMLHttpRequest();req1.onload=req1Listener;req1.open('GET','https://member.tutorabc.com.cn/Member/GetServerTime',true);req1.withCredentials=true;req1.send('{}');function req1Listener(){showarea1.innerHTML=this.responseText;function copytext1(){copyText1.select(this.responseText);document.execCommand("copy")};};}</script>
 </center>
 </body>
 </html>
