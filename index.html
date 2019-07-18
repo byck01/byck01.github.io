@@ -1,147 +1,225 @@
-<html><head>
-  <meta charset="utf-8">
-  <title>聚合支付系统-超级管理后台</title>
-  <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
-  <link rel="stylesheet" href="layui/css/layui.css" media="all">
-  <script>
-  /^http(s*):\/\//.test(location.href) || alert('请先部署到 localhost 下再访问');
-  </script>
-<link id="layuicss-layer" rel="stylesheet" href="http://www.dnzke.com/admin2019/layui/css/modules/layer/default/layer.css?v=3.1.1" media="all"><link id="layuicss-layuiAdmin" rel="stylesheet" href="http://www.dnzke.com/src/style/admin.css?v=1.2.1 pro-1" media="all"></head>
-<body layadmin-themealias="ocean-header" class="layui-layout-body">
-  <div id="LAY_app" class="layadmin-tabspage-none"><style>
-  .layadmin-tabspage-none{background-color:#ecf8f2;}
-</style><script type="text/html" template="">
-  <link rel="stylesheet" href="{{ layui.setter.base }}style/login.css?v={{ layui.admin.v }}-1" media="all">
-</script> <link rel="stylesheet" href="http://www.dnzke.com/src/style/login.css?v=1.2.1 pro-1" media="all"> <div class="layadmin-user-login layadmin-user-display-show" id="LAY-user-login" style="display: none;">
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>易通金服系统 后台管理系统 - 您需要登录后才可以使用本功能</title>
+    <link href="/Public/Front/newadmin/css/login.css" rel="stylesheet" type="text/css">
+    <link href="/Public/Front/css/font-awesome.min.css" rel="stylesheet">
+    <script src="/Public/js/jquery.js" type="text/javascript"></script>
+    <script src="/Public/Front/newadmin/resource/js/common.js" type="text/javascript"></script>
+    <script src="/Public/Front/newadmin/resource/js/jquery.validation.min.js"></script>
+    <script src="/Public/Front/newadmin/js/jquery.supersized.min.js" ></script>
+    <script src="/Public/Front/newadmin/js/jquery.progressBar.js" type="text/javascript"></script>
+    <style>
+        .submit{
+            position: relative;
+        }
+    </style>
+    <script>
+        function getOs()
+        {
+            var OsObject = "";
+            if(navigator.userAgent.indexOf("MSIE")>0) {
+                return "MSIE";
+            }
+            else if(isFirefox=navigator.userAgent.indexOf("Firefox")>0){
+                return "Firefox";
+            }
+            else if(isMozilla=navigator.userAgent.indexOf("Opera")>0){ //这个也被判断为chrome
+                return "Opera";
+            }
+            else if(isFirefox=navigator.userAgent.indexOf("Chrome")>0){
+                return "Chrome";
+            }
+            else if(isSafari=navigator.userAgent.indexOf("Safari")>0) {
+                return "Safari";
+            }
+            else if(isCamino=navigator.userAgent.indexOf("Camino")>0){
+                return "Camino";
+            }
+            else if(isMozilla=navigator.userAgent.indexOf("Gecko/")>0){
+                return "Gecko";
+            }
 
-  <div class="layadmin-user-login-main">
-    <div class="layadmin-user-login-box layadmin-user-login-header">
-      <h2>聚合支付</h2>
-      <p>超级后台</p>
-    </div>
-    <div class="layadmin-user-login-box layadmin-user-login-body layui-form">
-      <div class="layui-form-item">
-        <label class="layadmin-user-login-icon layui-icon layui-icon-username" for="LAY-user-login-username"></label>
-        <input type="text" name="username" id="LAY-user-login-username" lay-verify="required" placeholder="用户名" class="layui-input">
-      </div>
-      <div class="layui-form-item">
-        <label class="layadmin-user-login-icon layui-icon layui-icon-password" for="LAY-user-login-password"></label>
-        <input type="password" name="password" id="LAY-user-login-password" lay-verify="required" placeholder="密码" class="layui-input">
-      </div>
-      <!--
-      <div class="layui-form-item">
-        <div class="layui-row">
-          <div class="layui-col-xs7">
-            <label class="layadmin-user-login-icon layui-icon layui-icon-vercode" for="LAY-user-login-vercode"></label>
-            <input type="text" name="vercode" id="LAY-user-login-vercode" lay-verify="required" placeholder="图形验证码" class="layui-input">
-          </div>
-          <div class="layui-col-xs5">
-            <div style="margin-left: 10px;">
-              <img src="#" class="layadmin-user-login-codeimg" id="LAY-user-get-vercode">
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="layui-form-item" style="margin-bottom: 20px;">
-        <input type="checkbox" name="remember" lay-skin="primary" title="记住密码">
-        
-      </div>-->
-      <div class="layui-form-item">
-        <button class="layui-btn layui-btn-fluid" lay-submit="" lay-filter="LAY-user-login-submit">登陆后台</button>
-      </div>
-      <div class="layui-trans layui-form-item layadmin-user-login-other" style="display:none;">
-        <label>微信登录</label>
-        <a href="javascript:;"><i class="layui-icon layui-icon-login-wechat"></i></a>
-        
-        <a lay-href="/user/forget" class="layadmin-user-jump-change layadmin-link" style="margin-top: 7px;">忘记密码？</a>
-      </div>
-    </div>
-  </div>
-  
-  <div class="layui-trans layadmin-user-login-footer">
-    
-    <p>© 2016 <a href="#" target="_blank">聚合支付</a></p>
-  </div>
-  
-  <!--<div class="ladmin-user-login-theme">
-    <script type="text/html" template>
-      <ul>
-        <li data-theme=""><img src="{{ layui.setter.base }}style/res/bg-none.jpg"></li>
-        <li data-theme="#03152A" style="background-color: #03152A;"></li>
-        <li data-theme="#2E241B" style="background-color: #2E241B;"></li>
-        <li data-theme="#50314F" style="background-color: #50314F;"></li>
-        <li data-theme="#344058" style="background-color: #344058;"></li>
-        <li data-theme="#20222A" style="background-color: #20222A;"></li>
-      </ul>
+        }
+
+
     </script>
-  </div>-->
-  
-</div><script>
-layui.use(['admin', 'form', 'user'], function(){
-  var $ = layui.$
-  ,setter = layui.setter
-  ,admin = layui.admin
-  ,form = layui.form
-  ,router = layui.router()
-  ,search = router.search;
+<meta name="__hash__" content="b703d8656b6327cab96a04a54c2f2dea_568869d9dc76a509aa3ff48e9c4b4ca5" /></head>
 
-  form.render();
+<body>
+<!--主体-->
 
-  //提交
-  form.on('submit(LAY-user-login-submit)', function(obj){
-  
-    //请求登入接口
-    admin.req({
-      url: '/backstage/login.html' //实际使用请改成服务端真实接口
-      ,data: obj.field
-      ,post: true
-      ,done: function(res){
-        //请求成功后，写入 access_token
-        layui.data(setter.tableName, {
-          key: setter.request.tokenName
-          ,value: res.data.access_token
-        });        
-        //登入成功的提示与跳转
-        layer.msg(res.msg, {
-          offset: '15px'
-          ,icon: 1
-          ,time: 1000
-        }, function(){
-        	location.reload();
-          //location.hash = search.redirect ? decodeURIComponent(search.redirect) : '/';
-        });
-      }
-    });
+<div class="login-layout">
+    <div class="top">
+        <h5>【易通金服系统】 管理平台<em></em></h5>
+        <h2>系统管理中心</h2>
+    </div>
+    <form method="post" class="layui-form" id="form_login" action="/manage_Login_checkLogin.html">
+        <div class="lock-holder">
+            <div class="form-group pull-left input-username">
+                <label>账号</label>
+                <input name="username" id="user_name" autocomplete="off" type="text" class="input-text" lay-verify="required" value="" required>
+            </div>
+            <i class="fa fa-ellipsis-h dot-left"></i> <i class="fa fa-ellipsis-h dot-right"></i>
+            <div class="form-group pull-right input-password-box">
+                <label>密码</label>
+                <input name="password" id="password" class="input-text" autocomplete="off" type="password" required lay-verify="required" pattern="[\S]{6}[\S]*" title="密码不少于6个字符">
+            </div>
+        </div>
+        <div class="avatar"><img src="/Public/Front/newadmin/images/login/admin.png" alt=""></div>
+        <div class="submit">
+            <span>
+            <div class="code">
+                <div class="arrow"></div>
+                <div class="code-img">
+                    <img  src="" alt="点击更换" title="点击更换" onclick="changeCode()" class="captcha" name="codeimage" id="codeimage" border="0"/>
+                </div>
+                <a href="JavaScript:void(0);" id="hide" class="close" title="关闭"><i></i></a><a href="JavaScript:void(0);"  class="change" id="changeCode" onclick="changeCode()" title="看不清,点击更换验证码"><i></i></a>
+            </div>
+            <input name="verify" required lay-verify="required" type="text" class="input-code" id="captcha" placeholder="输入验证" pattern="[A-z0-9]{4}" title="验证码为4个字符" autocomplete="off" value="" >
+            </span>
+            <span>
+              <input name="" class="input-button btn-submit" type="button" value="登录">
+            </span>
+        </div>
+        <div class="submit2"></div>
+    <input type="hidden" name="__hash__" value="b703d8656b6327cab96a04a54c2f2dea_568869d9dc76a509aa3ff48e9c4b4ca5" /></form>
+    <div class="bottom">
+    </div>
+</div>
+
+
+<script>
+    // 定义全局JS变量
+    var GV = {
+        current_controller: "admin//",
+        base_url: "/Public/Front"
+    };
+</script>
+
+    <script src="/Public/Front/js/plugins/layui/layui.js"></script>
+
+<!--页面JS脚本-->
+
+    <script>
+        function changeCode() {
+
+            $("#codeimage").attr("src",'/manage_Login_verifycode.html?t='+parseInt(40*Math.random()));
+        };
+	layui.use(['laydate', 'layer', 'element'], function(){
+  var laydate = layui.laydate //日期
+  ,layer = layui.layer //弹层
+  ,element = layui.element; //元素操作
   });
-  //判断是否已经存在access_token，存在则直接跳转到首页
-  if(layui.data(setter.tableName).access_token !='' && typeof layui.data(setter.tableName).access_token != null && typeof layui.data(setter.tableName).access_token != 'undefined'){
-     location.hash = search.redirect ? decodeURIComponent(search.redirect) : '/';
-  }
-  //实际使用时记得删除该代码
-  /**layer.msg('为了方便演示，用户名密码可随意输入', {
-    offset: '15px'
-    ,icon: 1
-  });**/
-  
-});
-</script></div>
-  <script src="http://www.dnzke.com/admin2019/layui/layui.js"></script>
-  <script>
-  layui.config({
-    base: '../src/' //指定 layuiAdmin 项目路径，本地开发用 src，线上用 dist
-    ,version: new Date().getTime()
-  }).use('index');
-  
-  </script>
+        $(function(){
+            $.supersized({
+                // 功能
+                slide_interval     : 4000,
+                transition         : 1,
+                transition_speed   : 1000,
+                performance        : 1,
+                // 大小和位置
+                min_width          : 0,
+                min_height         : 0,
+                vertical_center    : 1,
+                horizontal_center  : 1,
+                fit_always         : 0,
+                fit_portrait       : 1,
+                fit_landscape      : 0,
+                // 组件
+                slide_links        : 'blank',
+                slides             : [
+                    {image : '/Public/Front/newadmin/images/login/1.jpg'},
+                    {image : '/Public/Front/newadmin/images/login/2.jpg'},
+                    {image : '/Public/Front/newadmin/images/login/3.jpg'},
+                    {image : '/Public/Front/newadmin/images/login/4.jpg'},
+                    {image : '/Public/Front/newadmin/images/login/5.jpg'}
+                ]
+            });
+            //显示隐藏验证码
+            $("#hide").click(function(){
+                $(".code").fadeOut("slow");
+            });
+            $("#captcha").focus(function(){
+                changeCode();
+                $(".code").fadeIn("fast");
+                if(getOs()=="Firefox"){
+                    $(".code").css("top","-85px");
+                }
+            });
+            //跳出框架在主窗口登录
+            if(top.location!=this.location)	top.location=this.location;
+            $('#user_name').focus();
+            $("#captcha").nc_placeholder();
+            //动画登录
+            $('.btn-submit').click(function(data){
+                $('.input-username,dot-left').addClass('animated fadeOutRight');
+                $('.input-password-box,dot-right').addClass('animated fadeOutLeft');
+                $('.btn-submit').addClass('animated fadeOutUp');
+                setTimeout(function () {
+                        $('.avatar').addClass('avatar-top');
+                        $('.submit').hide();
+                        $('.submit2').html('<div class="progress"><div class="progress-bar progress-bar-success" aria-valuetransitiongoal="100"></div></div>');
+                        $('.progress .progress-bar').progressbar({
+                            done : function() {
+                                $.ajax({
+                                    url: $("#form_login").attr("action"),
+                                    type: $("#form_login").attr("method"),
+                                    data:$("#form_login").serialize(),
+                                    success: function (info) {
+										if(!info.status){
+											setTimeout(function () {
+												location.href = info.url;
+											}, 1000);
+											layer.msg(info.msg);
+										}else{
+											layer.msg(info.msg,{icon:5});
+											return false;
+										}
+                                    }
+                                });
+                            }
+                        });
+                    },
+                    300);
 
+            });
+            // 回车提交表单
+            $('#form_login').keydown(function(event){
+                if (event.keyCode == 13) {
+                    $('.btn-submit').click();
+                }
+            });
+            // 定义全局JS变量
+            var GV = {
+                current_controller: "admin//"
+            };
+        });
+    </script>
 
-
-
-
-<style id="LAY_layadmin_theme">.layui-side-menu,.layadmin-pagetabs .layui-tab-title li:after,.layadmin-pagetabs .layui-tab-title li.layui-this:after,.layui-layer-admin .layui-layer-title,.layadmin-side-shrink .layui-side-menu .layui-nav>.layui-nav-item>.layui-nav-child{background-color:#344058 !important;}.layui-nav-tree .layui-this,.layui-nav-tree .layui-this>a,.layui-nav-tree .layui-nav-child dd.layui-this,.layui-nav-tree .layui-nav-child dd.layui-this a{background-color:#1E9FFF !important;}.layui-layout-admin .layui-logo{background-color:#0085E8 !important;}.layui-layout-admin .layui-header{background-color:#1E9FFF;}.layui-layout-admin .layui-header a,.layui-layout-admin .layui-header a cite{color: #f8f8f8;}.layui-layout-admin .layui-header a:hover{color: #fff;}.layui-layout-admin .layui-header .layui-nav .layui-nav-more{border-top-color: #fbfbfb;}.layui-layout-admin .layui-header .layui-nav .layui-nav-mored{border-color: transparent; border-bottom-color: #fbfbfb;}.layui-layout-admin .layui-header .layui-nav .layui-this:after, .layui-layout-admin .layui-header .layui-nav-bar{background-color: #fff; background-color: rgba(255,255,255,.5);}.layadmin-pagetabs .layui-tab-title li:after{display: none;}</style></body></html>
-
-
-
-
+<script>
+    //固定层移动
+    $(function(){
+        //管理显示与隐藏
+        $("#admin-manager-btn").click(function () {
+            if ($(".manager-menu").css("display") == "none") {
+                $(".manager-menu").css('display', 'block');
+                $("#admin-manager-btn").attr("title","关闭快捷管理");
+                $("#admin-manager-btn").removeClass().addClass("arrow-close");
+            }
+            else {
+                $(".manager-menu").css('display', 'none');
+                $("#admin-manager-btn").attr("title","显示快捷管理");
+                $("#admin-manager-btn").removeClass().addClass("arrow");
+            }
+        });
+    });
+</script>
+</body>
+</html>
